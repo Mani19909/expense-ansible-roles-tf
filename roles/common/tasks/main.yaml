@@ -1,0 +1,13 @@
+- name: install required packages
+  ansible.builtin.dnf:
+    name:
+      - git
+      - mysql
+      - python3-pip
+    state: present
+
+- name: install python mysql libs
+  ansible.builtin.pip:
+    name:
+      - PyMySQL
+      - cryptography
