@@ -1,8 +1,16 @@
-- name: "configure {{ component }} server"
-  hosts: all
+- name: Setup backend
+  hosts: localhost
   connection: local
-  vars_files:
-  - "variables-{{ env }}.yaml"
   become: yes
+
+  vars:
+    db_host: db.daws.info
+    db_user: admin
+    db_password: ExpenseApp@1
+    db_name: expense
+    app_location: /app
+
   roles:
-  - "{{ component }}"
+    - common
+    - backend
+    - db
